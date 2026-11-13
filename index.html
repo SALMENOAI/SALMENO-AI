@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SALMENO AI</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;background:#0b1020;color:#fff;
+ font-family:Arial,sans-serif;min-height:100vh;
+ display:flex;flex-direction:column
+}
+header{
+ padding:17px 20px;border-bottom:1px solid #29334a;
+ display:flex;align-items:center;gap:12px
+}
+.logo{
+ width:42px;height:42px;border-radius:13px;
+ background:linear-gradient(135deg,#2478ed,#12c6c0);
+ display:grid;place-items:center;font-size:23px
+}
+.brand{font-size:21px;font-weight:bold}
+.sub{font-size:11px;color:#91a4c3;margin-top:4px}
+main{
+ width:100%;max-width:850px;margin:auto;
+ padding:35px 18px;flex:1
+}
+.hero{text-align:center;margin:45px 0 35px}
+.hero h1{font-size:34px;margin:0 0 12px}
+.hero h1 span{color:#48a7ff}
+.hero p{color:#9cacc7;line-height:1.6}
+.cards{
+ display:grid;grid-template-columns:repeat(2,1fr);
+ gap:12px;margin-bottom:25px
+}
+.card{
+ background:#151e32;border:1px solid #293751;
+ border-radius:14px;padding:17px;color:#dce8ff
+}
+.card b{display:block;margin-bottom:8px}
+.card small{color:#94a6c3;line-height:1.5}
+.chat{
+ background:#151e32;border:1px solid #30405c;
+ border-radius:18px;padding:12px
+}
+textarea{
+ width:100%;background:transparent;border:0;
+ outline:0;color:white;resize:vertical;
+ min-height:65px;font-size:16px;padding:10px
+}
+.actions{display:flex;justify-content:space-between;align-items:center}
+.actions span{font-size:11px;color:#8fa1bd}
+button{
+ border:0;border-radius:11px;padding:12px 19px;
+ background:#287cf0;color:white;font-weight:bold;
+ font-size:15px
+}
+#messages{margin-bottom:18px}
+.message{
+ padding:13px 15px;border-radius:13px;
+ margin:10px 0;line-height:1.5;white-space:pre-wrap
+}
+.user{background:#203b63;margin-left:25px}
+.ai{background:#202b40;margin-right:25px}
+footer{
+ text-align:center;color:#8191aa;font-size:12px;
+ padding:20px;border-top:1px solid #29334a
+}
+@media(max-width:480px){
+ .hero h1{font-size:27px}
+ .cards{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<header>
+ <div class="logo">✦</div>
+ <div>
+  <div class="brand">SALMENO AI</div>
+  <div class="sub">YOUR PERSONAL AI ASSISTANT</div>
+ </div>
+</header>
+<main>
+ <section class="hero">
+  <h1>Hello, welcome to <span>SALMENO AI</span></h1>
+  <p>Your ideas. Your creativity. Your AI assistant.</p>
+ </section>
+ <div class="cards">
+  <div class="card"><b>✍️ Creative Writing</b><small>Create stories, scripts and ideas.</small></div>
+  <div class="card"><b>💡 Ask Anything</b><small>Explore questions and learn new things.</small></div>
+  <div class="card"><b>🎬 Movie Prompts</b><small>Develop cinematic scenes and concepts.</small></div>
+  <div class="card"><b>🌍 Explore Ideas</b><small>Discover new possibilities with AI.</small></div>
+ </div>
+ <section class="chat">
+  <div id="messages"></div>
+  <textarea id="question" placeholder="Message SALMENO AI..."></textarea>
+  <div class="actions">
+   <span>AI assistant interface preview</span>
+   <button onclick="sendMessage()">➤ Send</button>
+  </div>
+ </section>
+</main>
+<footer>© 2026 SALMENO AI · Built with creativity</footer>
+<script>
+function sendMessage(){
+ const box=document.getElementById("question");
+ const value=box.value.trim();
+ if(!value)return;
+ const messages=document.getElementById("messages");
+ const user=document.createElement("div");
+ user.className="message user";
+ user.textContent=value;
+ messages.appendChild(user);
+ const reply=document.createElement("div");
+ reply.className="message ai";
+ reply.textContent="Welcome to SALMENO AI! Your message interface is working. The AI engine will be connected in our next development step.";
+ messages.appendChild(reply);
+ box.value="";
+}
+</script>
+</body>
+</html>
