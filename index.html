@@ -104,20 +104,40 @@ footer{
 </main>
 <footer>© 2026 SALMENO AI · Built with creativity</footer>
 <script>
-function sendMessage(){
+async function sendMessage(){
  const box=document.getElementById("question");
  const value=box.value.trim();
  if(!value)return;
+
  const messages=document.getElementById("messages");
+
  const user=document.createElement("div");
  user.className="message user";
  user.textContent=value;
  messages.appendChild(user);
+
  const reply=document.createElement("div");
  reply.className="message ai";
- reply.textContent="Welcome to SALMENO AI! Your message interface is working. The AI engine will be connected in our next development step.";
+ reply.textContent="Connecting to SALMENO AI...";
  messages.appendChild(reply);
+
  box.value="";
+
+ try {
+  const response=await fetch(
+   "https://salmeno-ai-api.salmanabbassalmanabbas761.workers.dev/",
+   {
+    method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body:JSON.stringify({message:value})
+   }
+  );
+
+  const data=await response.json();
+  reply.textContent=data.message || data.status || "Backend connected!";
+ } catch(error) {
+  reply.textContent="Connection failed. Please try again.";
+ }
 }
 </script>
 </body>
